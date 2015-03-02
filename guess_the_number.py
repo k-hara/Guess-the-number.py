@@ -1,10 +1,8 @@
-# template for "Guess the number" mini-project
 # input will come from buttons and an input field
 # all output for the game will be printed in the console
 import simplegui
 import random
 import math
-
 
 # initialize global variables used in your code
 num_range = 100
@@ -20,36 +18,24 @@ def new_game():
      global secret_num
      secret_num = random.randrange(0, num_range)
      return
-     
-     
 
 # define event handlers for control panel
 def range100():
+    # button that changes range to range [0,100) and restarts
     global num_range
     num_range = 100
     new_game()
     return
-   
-    # button that changes range to range [0,100) and restarts
     
-    # remove this when you add your code    
-
-    
-
 def range1000(): 
+    # button that changes range to range [0,1000) and restarts
     global num_range
     num_range = 1000
     new_game()
     return
-  
-    
-    
-    # button that changes range to range [0,1000) and restarts
-    
-    # remove this when you add your code    
-    pass
-    
+      
 def input_guess(guess):
+    # main game logic goes here	
     num_guess = int(guess)
     global num_remaining
     num_remaining = num_remaining - 1
@@ -59,26 +45,20 @@ def input_guess(guess):
         print "Correct!"
         new_game()
     elif (num_remaining > 0) and (secret_num > num_guess):
-        print "Higher"
+        print "Higher!"
     elif (num_remaining > 0) and (secret_num < num_guess):
-        print "Lower"
+        print "Lower!"
     else:
-        print " You lose!"
+        print "You ran out the guesses. The number was ", secret_num, "."
         new_game()
            
 # create frame
 f = simplegui.create_frame("Guess the number", 200, 200)
-
 
 # register event handlers for control elements
 f.add_button("Range is [0, 100)", range100, 200)
 f.add_button("Range is [0, 1000)", range1000, 200)
 f.add_input("Enter a guess", input_guess, 200)
 
-
-
 # call new_game and start frame
-
 new_game()
-
-# always remember to check your completed program against the grading rubric
