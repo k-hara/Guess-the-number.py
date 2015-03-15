@@ -12,12 +12,13 @@ secret_num = random.randrange(0, num_range)
 # helper function to start and restart the game
 def new_game():
      global num_remaining 
-     num_remaining = int(math.ceil(math.log(num_range, 2))) 
+     num_remaining = int(math.ceil(math.log(num_range, 2)))
+     print ""
      print "New game. Range is from 0 to", num_range
      print "Number of remaining guesses is",num_remaining
      global secret_num
      secret_num = random.randrange(0, num_range)
-     return
+     
 
 # define event handlers for control panel
 def range100():
@@ -43,6 +44,7 @@ def input_guess(guess):
     print "Number of remaining guesses is",num_remaining
     if num_guess == secret_num:
         print "Correct!"
+        print ""
         new_game()
     elif (num_remaining > 0) and (secret_num > num_guess):
         print "Higher!"
@@ -50,6 +52,7 @@ def input_guess(guess):
         print "Lower!"
     else:
         print "You ran out the guesses. The number was ", secret_num, "."
+        print ""
         new_game()
            
 # create frame
